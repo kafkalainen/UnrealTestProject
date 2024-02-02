@@ -11,13 +11,16 @@ AFloatingActor::AFloatingActor()
 	VisualMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	VisualMesh->SetupAttachment(RootComponent);
 
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> CubeVisualAsset(TEXT("/Game/StarterContent/Shapes/Shape_Cube.Shape_Cube"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> CubeVisualAsset(TEXT("/Engine/BasicShapes/Cube.Cube"));
 
-	if (CubeVisualAsset.Succeeded())
+	if (!CubeVisualAsset.Succeeded())
 	{
-		VisualMesh->SetStaticMesh(CubeVisualAsset.Object);
-		VisualMesh->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
+		UE_LOG(LogInit, Warning, TEXT("Cube visual asset was not loaded"));
+		return;
 	}
+	
+	VisualMesh->SetStaticMesh(CubeVisualAsset.Object);
+	VisualMesh->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
 }
 
 // Called when the game starts or when spawned
@@ -34,8 +37,8 @@ void AFloatingActor::Tick(float DeltaTime)
 	FVector NewLocation = GetActorLocation();
 	FRotator NewRotation = GetActorRotation();
 	const float DeltaHeight = FMath::Sin(GetGameTimeSinceCreation() + DeltaTime) - FMath::Sin(GetGameTimeSinceCreation());
-	NewLocation.Z += DeltaHeight * 20.0f;       //Scale our height by a factor of 20
-	const float DeltaRotation = DeltaTime * 20.0f;    //Rotate by 20 degrees per second
+	NewLocation.Z += DeltaHeight * FloatSpeed;
+	const float DeltaRotation = DeltaTime * RotationSpeed;
 	NewRotation.Yaw += DeltaRotation;
 	SetActorLocationAndRotation(NewLocation, NewRotation);
 }
