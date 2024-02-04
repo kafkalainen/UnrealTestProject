@@ -14,6 +14,12 @@ class TESTPROJECT_API AFireActor : public AActor
 public:
 	// Sets default values for this actor's properties
 	AFireActor();
+	UPROPERTY(EditAnywhere, Category = "Effects")
+	UParticleSystem* ParticleSystemAsset;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Effects")
+	UParticleSystemComponent *ParticleSystemComponent;
+
 
 protected:
 	// Called when the game starts or when spawned
