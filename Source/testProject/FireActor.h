@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Perception/AIPerceptionStimuliSourceComponent.h"
 #include "FireActor.generated.h"
 
 UCLASS()
@@ -19,6 +20,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Effects")
 	UParticleSystemComponent *ParticleSystemComponent;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category= "AI")
+	UAIPerceptionStimuliSourceComponent* PerceptionStimuliSourceComponent;
+	
 protected:
 	virtual void BeginPlay() override;
 
