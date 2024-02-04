@@ -27,7 +27,6 @@ AFloatingActor::AFloatingActor()
 void AFloatingActor::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame

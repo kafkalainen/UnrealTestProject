@@ -10,9 +10,8 @@ UCLASS()
 class TESTPROJECT_API AFireActor : public AActor
 {
 	GENERATED_BODY()
-
+	static float GetHeightAtLocation(const UWorld *World, float X, float Y);
 public:
-	// Sets default values for this actor's properties
 	AFireActor();
 	UPROPERTY(EditAnywhere, Category = "Effects")
 	UParticleSystem* ParticleSystemAsset;
@@ -20,12 +19,11 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Effects")
 	UParticleSystemComponent *ParticleSystemComponent;
 
-
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	void Start();
+	void Stop();
 };
