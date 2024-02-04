@@ -1,6 +1,7 @@
 #include "FireActor.h"
 #include "Particles/ParticleSystemComponent.h"
 #include "Engine/World.h"
+#include "Perception/AISense_Sight.h"
 
 AFireActor::AFireActor()
 {
@@ -8,8 +9,19 @@ AFireActor::AFireActor()
 	ParticleSystemComponent = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Fire"));
 	RootComponent = ParticleSystemComponent;
 
+	// Initialize the AI Perception Stimuli Source Component
+	PerceptionStimuliSourceComponent = CreateDefaultSubobject<UAIPerceptionStimuliSourceComponent>(TEXT("PerceptionStimuliSourceComponent"));
+
+	// Register the actor as a source of stimuli
+	PerceptionStimuliSourceComponent->RegisterForSense(UAISense_Sight::StaticClass());
+	PerceptionStimuliSourceComponent->RegisterWithPerceptionSystem();
+	PerceptionStimuliSourceComponent->bAutoRegister = true;
+
 	static ConstructorHelpers::FObjectFinder<UParticleSystem> ParticleSystemAsset(TEXT("/Script/Engine.ParticleSystem'/Game/Realistic_Starter_VFX_Pack_Vol2/Particles/Fire/P_Fire_Big.P_Fire_Big'"));
 	ParticleSystemComponent->SetTemplate(ParticleSystemAsset.Object);
+
+	// Add Fire as tag for the actor for AI perception to spot it.
+	Tags.Add(FName("Fire"));
 }
 
 void AFireActor::BeginPlay()
@@ -51,11 +63,9 @@ float AFireActor::GetHeightAtLocation(const UWorld *World, const float X, const 
 	FHitResult HitResult;
 	if (World->LineTraceSingleByChannel(HitResult, Start, End, ECC_WorldStatic) && HitResult.bBlockingHit)
 	{
-		UE_LOG(LogInit, Warning, TEXT("HitResult was %f"), HitResult.ImpactPoint.Z);
 		return HitResult.ImpactPoint.Z;
 	}
 
-	UE_LOG(LogInit, Warning, TEXT("No hits."));
 	return 0.0f;
 }
 
