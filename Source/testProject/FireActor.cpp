@@ -36,9 +36,6 @@ void AFireActor::BeginPlay()
 void AFireActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-
-	
 	// if (CurrentTime + DeltaTime < TimeToGrow)
 	// {
 	// 	CurrentTime += DeltaTime;
@@ -67,25 +64,24 @@ void AFireActor::Stop()
 	ParticleSystemComponent->DeactivateSystem();
 }
 
-float AFireActor::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+void AFireActor::OnExtinguishFire(float Damage)
 {
-	if (Health == 0)
-	{
-		return 0;
-	}
-	
-	Health -= DamageAmount;
 	if (Health <= 0)
 	{
-		const float Remainder = DamageAmount - Health;
-		Health = 0;
-		Destroy();
-		return Remainder;
+		UE_LOG(LogInit, Display, TEXT("Health at zero."));
+		return;
 	}
-	return DamageAmount;
+	
+	Health -= Damage;
+	SetActorScale3D(GetActorScale3D() * (Health / MaxHealth));
+	UE_LOG(LogInit, Display, TEXT("Current health: %d"), Health);
+	if (Health <= 0)
+	{
+		Health = 0;
+		UE_LOG(LogInit, Display, TEXT("Health at zero."));
+		Destroy();
+	}
 }
-
-
 
 float AFireActor::GetHeightAtLocation(const UWorld *World, const float X, const float Y)
 {
