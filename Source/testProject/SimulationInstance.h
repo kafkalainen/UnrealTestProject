@@ -19,7 +19,5 @@ class TESTPROJECT_API USimulationInstance : public UGameInstance
 	AFireActor* FireActor;
 public:
 	void StartSimulation();
-	void ResetSimulation();
-	void EndSimulation();
 	virtual void OnStart() override;
 };

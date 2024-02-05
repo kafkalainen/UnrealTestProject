@@ -1,4 +1,6 @@
 #include "FireActor.h"
+
+#include "ExtinguishFire.h"
 #include "Particles/ParticleSystemComponent.h"
 #include "Engine/World.h"
 #include "Perception/AISense_Sight.h"
@@ -27,21 +29,37 @@ AFireActor::AFireActor()
 void AFireActor::BeginPlay()
 {
 	Super::BeginPlay();
+	InitialScale = GetActorScale3D();
 	Start();
 }
 
 void AFireActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+
+	
+	// if (CurrentTime + DeltaTime < TimeToGrow)
+	// {
+	// 	CurrentTime += DeltaTime;
+	// 	return;
+	// }
+	//
+	// CurrentTime = 0;
+	// const FVector OldScale = GetActorScale3D();
+	// SetActorScale3D(OldScale * 1.2f);
+	// UE_LOG(LogInit, Display, TEXT("Fire grew in size."));
 }
 
 void AFireActor::Start()
 {
-	const float x = FMath::FRandRange(-1500.0f, 1500.0f);
-	const float y = FMath::FRandRange(-1500.0f, 1500.0f);
+	const float x = FMath::FRandRange(-5000.0f, 5000.0f);
+	const float y = FMath::FRandRange(-5000.0f, 5000.0f);
 	const FVector NewLocation = FVector(x, y, GetHeightAtLocation(GetWorld(), x, y));
 	SetActorLocation(NewLocation);
+	SetActorScale3D(InitialScale);
 	ParticleSystemComponent->ActivateSystem();
+	Health = MaxHealth;
 }
 
 void AFireActor::Stop()
@@ -49,11 +67,31 @@ void AFireActor::Stop()
 	ParticleSystemComponent->DeactivateSystem();
 }
 
+float AFireActor::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	if (Health == 0)
+	{
+		return 0;
+	}
+	
+	Health -= DamageAmount;
+	if (Health <= 0)
+	{
+		const float Remainder = DamageAmount - Health;
+		Health = 0;
+		Destroy();
+		return Remainder;
+	}
+	return DamageAmount;
+}
+
+
+
 float AFireActor::GetHeightAtLocation(const UWorld *World, const float X, const float Y)
 {
 	if (!World)
 	{
-		UE_LOG(LogInit, Warning, TEXT("Oops. No world was loaded."));
+		UE_LOG(LogInit, Warning, TEXT("No world was loaded."));
 		return 0.0f;
 	}
 
@@ -68,6 +106,25 @@ float AFireActor::GetHeightAtLocation(const UWorld *World, const float X, const 
 
 	return 0.0f;
 }
+
+bool AFireActor::IsDead() const
+{
+	return Health < 0;
+}
+
+// void AFireActor::Destroyed()
+// {
+// 	Super::Destroyed();
+//
+// 	if (const UWorld* World = GetWorld())
+// 	{
+// 		if (const AExtinguishFire *GameMode = Cast<AExtinguishFire>(World->GetAuthGameMode()))
+// 		{
+// 			GameMode->GetOnFireDied().Broadcast(this);
+// 		}
+// 	}
+// }
+
 
 
 

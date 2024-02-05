@@ -14,19 +14,8 @@ void USimulationInstance::StartSimulation()
 		const FRotator Rotation(0.0f, 0.0f, 0.0f);
 		
 		FireActor = World->SpawnActor<AFireActor>(AFireActor::StaticClass(), Location, Rotation);
-		UE_LOG(LogInit, Warning, TEXT("Spawned actor"));
 	}
-	UE_LOG(LogInit, Warning, TEXT("Simulation Started!! YAY!!"));
-}
-
-void USimulationInstance::EndSimulation()
-{
-	// Implement ending game logic here
-}
-
-void USimulationInstance::ResetSimulation()
-{
-	FireActor->Start();
+	UE_LOG(LogInit, Display, TEXT("Simulation Started."));
 }
 
 void USimulationInstance::OnStart()
