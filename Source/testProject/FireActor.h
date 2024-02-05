@@ -12,11 +12,10 @@ class TESTPROJECT_API AFireActor : public AActor
 {
 	GENERATED_BODY()
 	static float GetHeightAtLocation(const UWorld *World, float X, float Y);
-	float TimeToGrow = 3.0f;
-	float CurrentTime = 0.0f;
-	float Health = 0.0f;
-	float MaxHealth = 300.0f;
-	float TimeToRespawn = 3.0f;
+	float Health;
+	float MaxHealth;
+	float CurrentTime;
+	float TimeToRespawn;
 	FVector InitialScale;
 	
 public:
@@ -44,5 +43,5 @@ protected:
 public:
 	virtual void Tick(float DeltaTime) override;
 	void Start();
-	void Stop();
+	void Stop() const;
 };

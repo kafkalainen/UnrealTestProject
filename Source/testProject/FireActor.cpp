@@ -1,6 +1,5 @@
 #include "FireActor.h"
 
-#include "ExtinguishFire.h"
 #include "Particles/ParticleSystemComponent.h"
 #include "Engine/World.h"
 #include "Perception/AISense_Sight.h"
@@ -24,6 +23,11 @@ AFireActor::AFireActor()
 
 	// Add Fire as tag for the actor for AI perception to spot it.
 	Tags.Add(FName("Fire"));
+
+	Health = 0.0f;
+	MaxHealth = 300.0f;
+	CurrentTime = 0.0f;
+	TimeToRespawn = 3.0f;
 }
 
 void AFireActor::BeginPlay()
@@ -36,16 +40,20 @@ void AFireActor::BeginPlay()
 void AFireActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	// if (CurrentTime + DeltaTime < TimeToGrow)
-	// {
-	// 	CurrentTime += DeltaTime;
-	// 	return;
-	// }
-	//
-	// CurrentTime = 0;
-	// const FVector OldScale = GetActorScale3D();
-	// SetActorScale3D(OldScale * 1.2f);
-	// UE_LOG(LogInit, Display, TEXT("Fire grew in size."));
+
+	if (!IsDead())
+	{
+		return;
+	}
+	
+	if (CurrentTime + DeltaTime < TimeToRespawn)
+	{
+		CurrentTime += DeltaTime;
+		return;
+	}
+
+	CurrentTime = 0;
+	Start();
 }
 
 void AFireActor::Start()
@@ -57,12 +65,14 @@ void AFireActor::Start()
 	SetActorScale3D(InitialScale);
 	ParticleSystemComponent->ActivateSystem();
 	Health = MaxHealth;
+	UE_LOG(LogInit, Display, TEXT("Starting health: %f"), Health);
 }
 
-void AFireActor::Stop()
+void AFireActor::Stop() const
 {
 	ParticleSystemComponent->DeactivateSystem();
 }
+
 
 void AFireActor::OnExtinguishFire(float Damage)
 {
@@ -74,12 +84,12 @@ void AFireActor::OnExtinguishFire(float Damage)
 	
 	Health -= Damage;
 	SetActorScale3D(GetActorScale3D() * (Health / MaxHealth));
-	UE_LOG(LogInit, Display, TEXT("Current health: %d"), Health);
+	UE_LOG(LogInit, Display, TEXT("Current health: %f"), Health);
 	if (Health <= 0)
 	{
 		Health = 0;
 		UE_LOG(LogInit, Display, TEXT("Health at zero."));
-		Destroy();
+		Stop();
 	}
 }
 
@@ -105,22 +115,8 @@ float AFireActor::GetHeightAtLocation(const UWorld *World, const float X, const 
 
 bool AFireActor::IsDead() const
 {
-	return Health < 0;
+	return Health <= 0;
 }
-
-// void AFireActor::Destroyed()
-// {
-// 	Super::Destroyed();
-//
-// 	if (const UWorld* World = GetWorld())
-// 	{
-// 		if (const AExtinguishFire *GameMode = Cast<AExtinguishFire>(World->GetAuthGameMode()))
-// 		{
-// 			GameMode->GetOnFireDied().Broadcast(this);
-// 		}
-// 	}
-// }
-
 
 
 
