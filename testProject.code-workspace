@@ -1,0 +1,868 @@
+{
+	"folders": [
+		{
+			"name": "testProject",
+			"path": "."
+		},
+		{
+			"name": "UE5",
+			"path": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+		}
+	],
+	"settings": {
+		"typescript.tsc.autoDetect": "off",
+		"npm.autoDetect": "off"
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"ms-dotnettools.csharp",
+			"vadimcn.vscode-lldb",
+			"ms-vscode.mono-debug",
+			"dfarley1.file-picker"
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "testProject Linux Debug Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"Linux",
+					"Debug",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject Linux Debug Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"Linux",
+					"Debug",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"testProject Linux Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject Linux Debug Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"Linux",
+					"Debug",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject Linux DebugGame Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"Linux",
+					"DebugGame",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject Linux DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"Linux",
+					"DebugGame",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"testProject Linux DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject Linux DebugGame Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"Linux",
+					"DebugGame",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject Linux Development Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"Linux",
+					"Development",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject Linux Development Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"Linux",
+					"Development",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"testProject Linux Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject Linux Development Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"Linux",
+					"Development",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject Linux Test Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"Linux",
+					"Test",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject Linux Test Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"Linux",
+					"Test",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"testProject Linux Test Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject Linux Test Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"Linux",
+					"Test",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject Linux Shipping Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"Linux",
+					"Shipping",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject Linux Shipping Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"Linux",
+					"Shipping",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"testProject Linux Shipping Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject Linux Shipping Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"Linux",
+					"Shipping",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject LinuxArm64 Debug Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"LinuxArm64",
+					"Debug",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject LinuxArm64 Debug Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"LinuxArm64",
+					"Debug",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"testProject LinuxArm64 Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject LinuxArm64 Debug Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"LinuxArm64",
+					"Debug",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject LinuxArm64 DebugGame Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"LinuxArm64",
+					"DebugGame",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject LinuxArm64 DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"LinuxArm64",
+					"DebugGame",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"testProject LinuxArm64 DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject LinuxArm64 DebugGame Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"LinuxArm64",
+					"DebugGame",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject LinuxArm64 Development Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"LinuxArm64",
+					"Development",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject LinuxArm64 Development Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"LinuxArm64",
+					"Development",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"testProject LinuxArm64 Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject LinuxArm64 Development Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"LinuxArm64",
+					"Development",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject LinuxArm64 Test Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"LinuxArm64",
+					"Test",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject LinuxArm64 Test Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"LinuxArm64",
+					"Test",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"testProject LinuxArm64 Test Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject LinuxArm64 Test Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"LinuxArm64",
+					"Test",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject LinuxArm64 Shipping Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"LinuxArm64",
+					"Shipping",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject LinuxArm64 Shipping Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"LinuxArm64",
+					"Shipping",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"testProject LinuxArm64 Shipping Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProject LinuxArm64 Shipping Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProject",
+					"LinuxArm64",
+					"Shipping",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProjectEditor Linux Debug Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProjectEditor",
+					"Linux",
+					"Debug",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProjectEditor Linux Debug Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProjectEditor",
+					"Linux",
+					"Debug",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"testProjectEditor Linux Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProjectEditor Linux Debug Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProjectEditor",
+					"Linux",
+					"Debug",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProjectEditor Linux DebugGame Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProjectEditor",
+					"Linux",
+					"DebugGame",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProjectEditor Linux DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProjectEditor",
+					"Linux",
+					"DebugGame",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"testProjectEditor Linux DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProjectEditor Linux DebugGame Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProjectEditor",
+					"Linux",
+					"DebugGame",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProjectEditor Linux Development Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProjectEditor",
+					"Linux",
+					"Development",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProjectEditor Linux Development Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProjectEditor",
+					"Linux",
+					"Development",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"testProjectEditor Linux Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			},
+			{
+				"label": "testProjectEditor Linux Development Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"testProjectEditor",
+					"Linux",
+					"Development",
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+				}
+			}
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Launch testProject (Debug)",
+				"request": "launch",
+				"program": "/home/kafkalainen/Documents/ue_projects/testProject/Binaries/Linux/UnrealGame-Linux-Debug",
+				"preLaunchTask": "testProject Linux Debug Build",
+				"args": [
+				],
+				"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2",
+				"type": "cppdbg",
+				"visualizerFile": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch testProject (DebugGame)",
+				"request": "launch",
+				"program": "/home/kafkalainen/Documents/ue_projects/testProject/Binaries/Linux/UnrealGame-Linux-DebugGame",
+				"preLaunchTask": "testProject Linux DebugGame Build",
+				"args": [
+				],
+				"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2",
+				"type": "cppdbg",
+				"visualizerFile": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch testProject (Development)",
+				"request": "launch",
+				"program": "/home/kafkalainen/Documents/ue_projects/testProject/Binaries/Linux/UnrealGame",
+				"preLaunchTask": "testProject Linux Development Build",
+				"args": [
+				],
+				"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2",
+				"type": "cppdbg",
+				"visualizerFile": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch testProject (Test)",
+				"request": "launch",
+				"program": "/home/kafkalainen/Documents/ue_projects/testProject/Binaries/Linux/UnrealGame-Linux-Test",
+				"preLaunchTask": "testProject Linux Test Build",
+				"args": [
+				],
+				"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2",
+				"type": "cppdbg",
+				"visualizerFile": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch testProject (Shipping)",
+				"request": "launch",
+				"program": "/home/kafkalainen/Documents/ue_projects/testProject/Binaries/Linux/UnrealGame-Linux-Shipping",
+				"preLaunchTask": "testProject Linux Shipping Build",
+				"args": [
+				],
+				"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2",
+				"type": "cppdbg",
+				"visualizerFile": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch testProjectEditor (Debug)",
+				"request": "launch",
+				"program": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2/Engine/Binaries/Linux/UnrealEditor-Linux-Debug",
+				"preLaunchTask": "testProjectEditor Linux Debug Build",
+				"args": [
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject"
+				],
+				"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2",
+				"type": "cppdbg",
+				"visualizerFile": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch testProjectEditor (DebugGame)",
+				"request": "launch",
+				"program": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2/Engine/Binaries/Linux/UnrealEditor-Linux-DebugGame",
+				"preLaunchTask": "testProjectEditor Linux DebugGame Build",
+				"args": [
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject"
+				],
+				"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2",
+				"type": "cppdbg",
+				"visualizerFile": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch testProjectEditor (Development)",
+				"request": "launch",
+				"program": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2/Engine/Binaries/Linux/UnrealEditor",
+				"preLaunchTask": "testProjectEditor Linux Development Build",
+				"args": [
+					"/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject"
+				],
+				"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2",
+				"type": "cppdbg",
+				"visualizerFile": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Generate Project Files",
+				"type": "coreclr",
+				"request": "launch",
+				"preLaunchTask": "UnrealBuildTool Linux Development Build",
+				"program": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2/Engine/Build/BatchFiles/RunUBT.bat",
+				"args": [
+					"-projectfiles",
+					"-vscode",
+					"-project=/home/kafkalainen/Documents/ue_projects/testProject/testProject.uproject",
+					"-game",
+					"-engine",
+					"-dotnet"
+				],
+				"console": "internalConsole",
+				"internalConsoleOptions": "openOnSessionStart",
+				"stopAtEntry": false,
+				"cwd": "/home/kafkalainen/Documents/unreal_engine/5.3.2-downloaded/Linux_Unreal_Engine_5.3.2"
+			}
+		]
+	}
+}
